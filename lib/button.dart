@@ -16,7 +16,7 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
+      width: 400,
       margin: EdgeInsets.all(3),
       child: ElevatedButton(
         onPressed: onPressed,
