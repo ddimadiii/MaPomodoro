@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/login_page.dart';
 import 'button.dart';
 import 'wd_textfield.dart';
 
@@ -69,14 +70,37 @@ class _RegisterPageState extends State<RegisterPage> {
 
             SizedBox(height: 20),
             MyButton(label: 'Register', onPressed: _onRegister),
-            MyButton(label: 'Login', onPressed: () {}),
+            MyButton(label: 'Login', onPressed: _onLogin),
           ],
         ),
       ),
     );
   }
 
+  void _onLogin() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+    );
+  }
+
   void _onRegister() {
-    
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.lightGreenAccent,
+        content: Text(
+          style: TextStyle(color: Colors.black),
+          'Register Success!',
+        ),
+        duration: Duration(seconds: 1),
+      ),
+    );
+
+    // Future.delayed(Duration(seconds: 1), () {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const LoginPage()),
+    //   );
+    // });
   }
 }

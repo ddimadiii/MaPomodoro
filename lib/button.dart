@@ -10,7 +10,7 @@ class MyButton extends StatelessWidget {
     Key? key,
     required this.label,
     required this.onPressed,
-    this.color = Colors.blue,
+    this.color = Colors.white,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class MyButton extends StatelessWidget {
           backgroundColor: color,
           padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         ),
-        child: Text(label, style: TextStyle(fontSize: 16, color: Colors.white)),
+        child: Text(label, style: TextStyle(fontSize: 16, color: Colors.blue)),
       ),
     );
   }
