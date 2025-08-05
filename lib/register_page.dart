@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/login_page.dart';
+import 'package:pomodoro/widgets/widget_button.dart';
 import 'button.dart';
 import 'wd_textfield.dart';
 
@@ -25,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             RoundedTextField(labelText: 'Nama'),
             RoundedTextField(labelText: 'Email'),
-            RoundedTextField(labelText: 'Password'),
+            RoundedTextField(labelText: 'Password', obscureText: true),
 
             SizedBox(height: 16),
             Text('Jenis Kelamin'),
@@ -71,6 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20),
             MyButton(label: 'Register', onPressed: _onRegister),
             MyButton(label: 'Login', onPressed: _onLogin),
+            // WidgetButton(text: 'blabla', onPressed: () {}),
           ],
         ),
       ),

@@ -30,14 +30,6 @@ class RoundedTextField extends StatelessWidget {
           ),
           filled: true,
           fillColor: Colors.white,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black, width: 1.5),
-          ),
         ),
       ),
     );
