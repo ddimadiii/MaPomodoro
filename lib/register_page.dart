@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/login_page.dart';
+import 'package:pomodoro/widgets/widget_button.dart';
 import 'button.dart';
-
 import 'wd_textfield.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -11,6 +12,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  String? selectedGender;
+  String selectedDate = 'Belum dipilih';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +22,87 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Container(
         margin: EdgeInsets.all(15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RoundedTextField(labelText: 'Nama'),
             RoundedTextField(labelText: 'Email'),
-            RoundedTextField(labelText: 'Password'),
-            MyButton(label: 'Register', onPressed: () {}),
-            MyButton(label: 'Login', onPressed: () {}),
+            RoundedTextField(labelText: 'Password', obscureText: true),
+
+            SizedBox(height: 16),
+            Text('Jenis Kelamin'),
+            DropdownButton<String>(
+              value: selectedGender,
+              hint: Text('Pilih Jenis Kelamin'),
+              isExpanded: true,
+              items: ['Laki-laki', 'Perempuan'].map((value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+              },
+            ),
+
+            SizedBox(height: 16),
+            Text('Tanggal Lahir'),
+            Text(selectedDate),
+            ElevatedButton(
+              onPressed: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: DateTime(2000),
+                  firstDate: DateTime(1950),
+                  lastDate: DateTime.now(),
+                ).then((pickedDate) {
+                  if (pickedDate != null) {
+                    setState(() {
+                      selectedDate =
+                          "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                    });
+                  }
+                });
+              },
+              child: Text('Pilih Tanggal'),
+            ),
+
+            SizedBox(height: 20),
+            MyButton(label: 'Register', onPressed: _onRegister),
+            MyButton(label: 'Login', onPressed: _onLogin),
+            // WidgetButton(text: 'blabla', onPressed: () {}),
           ],
         ),
       ),
     );
+  }
+
+  void _onLogin() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+    );
+  }
+
+  void _onRegister() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.lightGreenAccent,
+        content: Text(
+          style: TextStyle(color: Colors.black),
+          'Register Success!',
+        ),
+        duration: Duration(seconds: 1),
+      ),
+    );
+
+    // Future.delayed(Duration(seconds: 1), () {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const LoginPage()),
+    //   );
+    // });
   }
 }

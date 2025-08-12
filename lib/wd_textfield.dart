@@ -7,12 +7,12 @@ class RoundedTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
 
   const RoundedTextField({
-    Key? key,
+    super.key,
     required this.labelText,
     this.controller,
     this.obscureText = false,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +30,6 @@ class RoundedTextField extends StatelessWidget {
           ),
           filled: true,
           fillColor: Colors.white,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black, width: 1.5),
-          ),
         ),
       ),
     );

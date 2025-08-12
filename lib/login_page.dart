@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/home_page.dart';
+import 'package:pomodoro/register_page.dart';
+import 'button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,8 +58,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Center(
               child: Container(
-                margin: EdgeInsets.all(20),
-                width: 250,
+                width: 365,
                 height: 50,
                 child: OutlinedButton(
                   onPressed: _loginAuth,
@@ -65,9 +66,17 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            MyButton(label: 'Register', onPressed: _onRegister),
           ],
         ),
       ),
+    );
+  }
+
+  void _onRegister() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterPage()),
     );
   }
 

@@ -10,21 +10,26 @@ class MyButton extends StatelessWidget {
     Key? key,
     required this.label,
     required this.onPressed,
-    this.color = Colors.blue,
+    this.color = Colors.white,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      margin: EdgeInsets.all(3),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    return Center(
+      child: Container(
+        width: 400,
+        margin: EdgeInsets.all(3),
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color,
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          ),
+          child: Text(
+            label,
+            style: TextStyle(fontSize: 16, color: Colors.blue),
+          ),
         ),
-        child: Text(label, style: TextStyle(fontSize: 16, color: Colors.white)),
       ),
     );
   }
