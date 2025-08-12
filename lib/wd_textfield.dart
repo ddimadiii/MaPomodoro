@@ -7,12 +7,12 @@ class RoundedTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
 
   const RoundedTextField({
-    Key? key,
+    super.key,
     required this.labelText,
     this.controller,
     this.obscureText = false,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
